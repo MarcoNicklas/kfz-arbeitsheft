@@ -143,6 +143,84 @@ const SEITEN = [
     ]}
   ]
 }
+,{
+  id: "gemischbildung-otto",
+  kapitel: "Gemischbildung",
+  titel: "Gemischbildung beim Ottomotor",
+  seiten: "Arbeitsheft S. 151–153",
+  situation: "Ein Fahrzeug hat die Abgasprüfung nicht bestanden. Beim Auslesen des Fehlerspeichers finden Sie folgenden Eintrag: „Lambdaregelung – am Regelanschlag“.",
+  bloecke: [
+    { titel: "1 Verbrennung des Kraftstoff-Luft-Gemisches", aufgaben: [
+      { nr:"1.1", frage:"Welche Aufgaben haben Gemischbildungssysteme in einem Ottomotor?", ref:"S. 264",
+        hinweise:["Der Motor läuft im Leerlauf, bei Volllast, kalt, warm … – das Gemisch muss immer passen.","Denke an zwei Dinge: Wie viel Gemisch wird gebraucht – und wie gut soll es verbrennen?"],
+        loesung:`Sie sollen für jeden Betriebszustand des Motors ein Kraftstoff-Luft-Gemisch herstellen, das in der Menge ausreichend ist und im Motor möglichst vollständig verbrannt wird.` },
+      { nr:"1.2", frage:"Beschreiben Sie, welche Reaktionen bei einer vollständigen Verbrennung ablaufen.",
+        hinweise:["Benzin besteht aus Kohlenwasserstoffen – also aus C- und H-Atomen.","Mit dem Sauerstoff (O₂) der Luft entsteht aus C … und aus H … – und dabei wird Energie frei."],
+        loesung:`Alle Kohlenstoffatome (C) und alle Wasserstoffatome (H) werden durch den Sauerstoff der Luft (O<sub>2</sub>) zu Kohlendioxid (CO<sub>2</sub>) und Wasser (H<sub>2</sub>O) oxidiert. Wärme wird erzeugt.` },
+      { nr:"1.3", frage:"Erklären Sie den Begriff „theoretisches Mischungsverhältnis“ (auch stöchiometrisches Luftverhältnis).",
+        hinweise:["Es geht um ein Verhältnis von Luft zu Kraftstoff – in kg.","Bezugsgröße ist immer 1 kg Kraftstoff, der vollständig verbrennen soll."],
+        loesung:`Das theoretische Mischungsverhältnis gibt an, wie viel kg Luft zur vollständigen Verbrennung von 1 kg Kraftstoff nötig sind.` },
+      { nr:"1.4", frage:"Geben Sie an, wie viel kg Luft zur vollständigen Verbrennung von 1 kg Superbenzin, Diesel und Autogas nötig sind.", ref:"S. 248",
+        hinweise:["Die Werte stehen in der Tabelle zu den Kraftstoffen (theoretischer Luftbedarf).","Ethanol ist mit 9,0 kg vorgegeben – die anderen Werte liegen alle zwischen 14 und 16 kg."],
+        loesung:`<div class="tablewrap"><table><tr><th>Kraftstoff</th><th>Luftbedarf</th></tr><tr><td>Ethanol</td><td>9,0 kg</td></tr><tr><td>Superbenzin</td><td>14,7 kg</td></tr><tr><td>Diesel</td><td>14,5 kg</td></tr><tr><td>Autogas</td><td>15,5 kg</td></tr></table></div>` },
+      { nr:"1.5", frage:"Wie ist das Luftverhältnis λ (Lambda) definiert?",
+        hinweise:["λ ist ein Bruch: Oben steht, was tatsächlich in den Motor kommt …","… unten steht, was theoretisch nötig wäre (siehe 1.3)."],
+        loesung:`λ = <b>zugeführte Luftmasse in kg</b> / <b>theoretischer Luftbedarf in kg</b>` },
+      { nr:"1.6", frage:"Ergänzen Sie die Tabelle mithilfe des Diagramms für Superbenzin (Mischungsverhältnisse 1 : 13,3 / 1 : 14,7 / 1 : 16,3).",
+        hinweise:["λ berechnest du so: Luftmenge aus dem Mischungsverhältnis geteilt durch 14,7.","λ kleiner 1 = zu wenig Luft (fett), λ größer 1 = zu viel Luft (mager). Die Mittelzeile (λ = 1) ist im Heft schon ausgefüllt – vergleiche damit Schadstoffe, Leistung und Verbrauch."],
+        loesung:`<div class="tablewrap"><table><tr><th>Mischungsverhältnis</th><th>λ</th><th>Gemischzusammensetzung</th><th>Schadstoffe</th><th>Leistung</th><th>Verbrauch</th></tr>
+<tr><td>1 : 13,3</td><td>13,3 / 14,7 = 0,9</td><td>fett, Luftmangel</td><td>hoch</td><td>hoch</td><td>hoch</td></tr>
+<tr><td>1 : 14,7</td><td>14,7 / 14,7 = 1,0</td><td>ideal, stöchiometrisches Verhältnis</td><td>minimal</td><td>mittel</td><td>mittel</td></tr>
+<tr><td>1 : 16,3</td><td>16,3 / 14,7 = 1,1</td><td>mager, Luftüberschuss</td><td>hoch</td><td>niedrig</td><td>gering</td></tr></table></div>` },
+      { nr:"1.7", frage:"Ermitteln Sie aus dem Diagramm auf Seite 151 die Zündgrenzen eines Ottomotors im mittleren Drehzahlbereich und ergänzen Sie die Tabelle.",
+        hinweise:["Suche im Diagramm die Linien „Zündgrenze fett“ (unten) und „Zündgrenze mager“ (oben).","Lies jeweils links das Mischungsverhältnis und rechts das Luftverhältnis λ ab."],
+        loesung:`<div class="tablewrap"><table><tr><th>Zündgrenze fett</th><th></th><th>Zündgrenze mager</th></tr>
+<tr><td>1 : 7,4</td><th>Mischungsverhältnis</th><td>1 : 19,2</td></tr>
+<tr><td>0,5</td><th>Luftverhältnis λ</th><td>1,3</td></tr>
+<tr><td>niedrig</td><th>Der Luftanteil ist</th><td>hoch</td></tr>
+<tr><td>Luftmangel</td><th>Man spricht von</th><td>Luftüberschuss</td></tr></table></div>` },
+      { nr:"1.8", frage:"Ottomotoren verwenden Gemischbildungssysteme, die homogene oder/und heterogene Gemische bilden. Erklären Sie.",
+        hinweise:["„homogen“ heißt gleichartig, „heterogen“ heißt ungleichartig.","Überlege: Ist das Gemisch überall im Brennraum gleich zusammengesetzt – oder nicht?"],
+        loesung:`<b>Homogene Gemischbildung:</b> Im gesamten Brennraum ist die Gemischzusammensetzung gleich.<br><b>Heterogene Gemischbildung:</b> Im Brennraum gibt es Bereiche unterschiedlicher Gemischzusammensetzung.` }
+    ]},
+    { titel: "2 Elektronische Einspritzanlagen", aufgaben: [
+      { nr:"2.1", frage:"Welche Aufgaben haben elektronische Einspritzanlagen?",
+        hinweise:["Wie soll der Kraftstoff in die Luft gelangen – als Strahl oder fein verteilt?","Zwei Fachbegriffe: Quantität (Menge) und Qualität (Mischungsverhältnis) – beides muss zum Betriebszustand passen."],
+        loesung:`Sie müssen Kraftstoff fein zerstäubt in die angesaugte Luft einspritzen. Dabei ist die jeweils erforderliche Gemischmenge (Quantität) und das Mischungsverhältnis (Qualität) genau dem Betriebszustand anzupassen.` },
+      { nr:"2.2", frage:"Tragen Sie in die abgebildeten Systeme (Tabelle S. 152) die Zuordnungsnummern ein: 1 Luftfilter, 2 Saugrohr, 3 Einspritzventil, 4 Motor, 5 Drosselklappe, 6 Kraftstoffverteiler, 7 Kraftstoff, 8 Luft.",
+        hinweise:["Oben sitzt immer der Luftfilter, darunter die Drosselklappe. Der rote Balken ist der Kraftstoffverteiler, der rote Pfeil der zugeführte Kraftstoff.","Achte darauf, wo die Einspritzventile sitzen: im Saugrohr (System 1) oder direkt am Zylinder (System 2 und 3)."],
+        loesung:`<b>System 1:</b> links (von oben) 1, 5, 7 – rechts (von oben) 6, 3, 2<br><b>System 2:</b> links 1, 5, 7, 4 – rechts 8, 2, 6, 3<br><b>System 3:</b> links 1, 5, 7, 4 – rechts 8, 2, 6, 3` },
+      { nr:"2.3", frage:"Kennzeichnen Sie verschiedenfarbig Luft (blau) und Kraftstoff (rot).",
+        hinweise:["Luft: alles vom Luftfilter über die Drosselklappe durch das Saugrohr bis zum Zylinder.","Kraftstoff: Zulauf, Kraftstoffverteiler und Einspritzventile."],
+        loesung:`<b>Blau (Luft):</b> Luftfilter, Drosselklappe, Saugrohr bis zum Zylinder.<br><b>Rot (Kraftstoff):</b> Kraftstoffzulauf, Kraftstoffverteiler, Einspritzventile.` },
+      { nr:"2.4", frage:"Ergänzen Sie die Tabelle durch Zuordnung der vorgegebenen Begriffe.",
+        hinweise:["System 1 spritzt ins Saugrohr, System 2 direkt in den Zylinder, System 3 hat beides.","Direkteinspritzung braucht hohen Druck → Hochdruckpumpe. „MED“ steht für Motronic mit Direkteinspritzung."],
+        loesung:`<div class="tablewrap"><table><tr><th></th><th>System 1</th><th>System 2</th><th>System 3</th></tr>
+<tr><td>Art der Einspritzung</td><td>indirekt, multi-point</td><td>direkt, multi-point</td><td>direkt/indirekt, multi-point</td></tr>
+<tr><td>Ort der Einspritzung</td><td>in das Saugrohr</td><td>in den Zylinder</td><td>in den Zylinder und in das Saugrohr</td></tr>
+<tr><td>erzeugtes Gemisch</td><td>homogen</td><td>heterogen/homogen</td><td>heterogen/homogen</td></tr>
+<tr><td>Art der Gemischbildung</td><td>äußere Gemischbildung</td><td>innere Gemischbildung</td><td>innere und äußere Gemischbildung</td></tr>
+<tr><td>Kennzeichen der Anlage</td><td>ein Einspritzventil im Saugrohr</td><td>Kraftstoff-Hochdruckpumpe</td><td>zwei Einspritzventile pro Zylinder</td></tr>
+<tr><td>Anlage</td><td>ME-Motronic</td><td>MED-Motronic</td><td>kombinierte Einspr.</td></tr></table></div>` }
+    ]},
+    { titel: "3 Aufbau einer indirekten Benzineinspritzanlage", aufgaben: [
+      { nr:"3.1", frage:"Ordnen Sie die Ziffern aus der Legende den Bauteilen im Bild zu.", ref:"S. 268",
+        hinweise:["Folge dem Weg der Luft von links nach rechts: Luftfilter → Luftmassenmesser → Drosselklappe → Saugrohr → Zylinder → Auspuff.","Oben rechts liegt der Tank mit Pumpe und Druckregler. Die Lambda-Sonde (11) kommt zweimal vor: vor und nach dem Katalysator."],
+        loesung:`21 Luftfilter (ganz links) · 2 Luftmassenmesser (grün, danach) · 12 Steuergerät (Kasten links unten) · 5 Drosselklappenpoti (grün, unter dem Ansaugrohr) · 6 Drosselklappenteil (rot, im Ansaugrohr) · 3 Regenerierventil (rot, oben in der Leitung) · 1 Aktivkohlefilter (oben) · 13 Saugrohr · 7 Lufttemperaturfühler (am Saugrohr) · 8 Abgasrückführventil (rot, unten) · 9 Drehzahlgeber (am Schwungrad) · 17 Einspritzventil (rot, am Einlass) · 14 Kraftstofffilter (oben) · 19 Zündspule mit Zündkerze (auf dem Zylinder) · 4 Bezugsmarkengeber (rechts am Zylinderkopf) · 16 Druckregler · 15 Kraftstoffpumpe (im Tank) · 10 Motortemperaturfühler (am Motorblock) · 20 Auspuffkrümmer · 18 Katalysator · 11 Lambda-Sonden (vor und nach dem Kat)` },
+      { nr:"3.2", frage:"Ordnen Sie den Teilsystemen der elektronischen Einspritzanlage die Bauteile (Nummern) zu.",
+        hinweise:["Teilsysteme: Luft-Ansaugsystem, Kraftstoffversorgungssystem, Steuerungs- und Regelungssystem, Zündanlage, Abgassystem.","Alle Sensoren, Aktoren und das Steuergerät gehören zum Steuerungs- und Regelungssystem – das ist die längste Liste."],
+        loesung:`<b>Luft-Ansaugsystem:</b> 13, 21<br><b>Kraftstoffversorgungssystem:</b> 1, 14, 15, 16<br><b>Steuerungs- und Regelungssystem:</b> 2, 4, 5, 7, 9, 10, 11, 12, 3, 6, 8, 17<br><b>Zündanlage:</b> 19<br><b>Abgassystem:</b> 18, 20` },
+      { nr:"3.3", frage:"Kennzeichnen Sie im Bild die Sensoren des Steuerungs- und Regelungssystems grün, die Aktoren rot.",
+        hinweise:["Sensoren messen und melden an das Steuergerät (z. B. Temperatur, Drehzahl, Luftmasse).","Aktoren führen Befehle des Steuergeräts aus – sie bewegen oder schalten etwas (Ventile, Klappe)."],
+        loesung:`<b>Grün (Sensoren):</b> 2, 4, 5, 7, 9, 10, 11<br><b>Rot (Aktoren):</b> 3, 6, 8, 17` }
+    ]},
+    { titel: "4 Lösung der Situation", aufgaben: [
+      { nr:"4", frage:"Was bedeutet der Fehlerspeichereintrag: „Lambdaregelung – am Regelanschlag“?",
+        hinweise:["Die Lambdaregelung korrigiert das Gemisch ständig in Richtung λ = 1,0.","„Am Regelanschlag“ heißt: Die Regelung ist schon am Maximum – sie kann nicht weiter nachregeln."],
+        loesung:`Das Steuerungs- und Regelungssystem kann die nötige Gemischzusammensetzung (z. B. λ = 1,0) nicht mehr herstellen.` }
+    ]}
+  ]
+}
 /* ---- neue Seiten hier anhängen:  ,{ id:"...", kapitel:"...", titel:"...", ... } ---- */
 ];
 
