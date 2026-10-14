@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arbeitsheft-Check Kfz</title>
+<style>
+:root{
+  --bg:#f4f6f8; --card:#fff; --ink:#1d2530; --muted:#5b6675; --line:#dde3ea;
+  --accent:#8bb33a; --accent-d:#5f8a1c; --blue:#2c6aa0; --hint:#fff6d9; --hint-b:#e8c75a;
+  --sol:#eaf5ea; --sol-b:#6aa84f; --red:#c0392b; --chip:#eef2f6;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#14181d; --card:#1e242b; --ink:#e7ecf1; --muted:#9aa6b4; --line:#2f3842;
+    --hint:#3a3220; --hint-b:#a88a2c; --sol:#1f3322; --sol-b:#5d9a47; --chip:#28313a; --blue:#6aa8e0; }
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:var(--card);border-bottom:4px solid var(--accent);padding:14px 16px;position:sticky;top:0;z-index:5}
+header .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+header h1{font-size:1.15rem;margin:0;color:var(--accent-d)}
+@media (prefers-color-scheme: dark){ header h1{color:var(--accent)} }
+header .sub{font-size:.85rem;color:var(--muted)}
+.wrap{max-width:900px;margin:0 auto}
+main{padding:16px}
+button{font:inherit;cursor:pointer}
+.back{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:8px;padding:6px 12px}
+.intro{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:18px}
+.intro ol{margin:.4em 0 0 1.2em;padding:0}
+.chapter{margin:22px 0 8px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pagecard{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:12px;padding:14px 16px;margin-bottom:10px;color:var(--ink)}
+.pagecard:hover{border-color:var(--accent)}
+.pagecard .t{font-weight:700;font-size:1.05rem}
+.pagecard .m{font-size:.85rem;color:var(--muted)}
+.bar{height:8px;background:var(--chip);border-radius:6px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;background:var(--accent);width:0}
+.situation{background:var(--chip);border-radius:10px;padding:12px 14px;margin:12px 0 18px}
+.situation b{color:var(--blue)}
+.block{margin-top:22px}
+.block h2{font-size:1.05rem;margin:0 0 8px;padding-left:10px;border-left:4px solid var(--accent)}
+.task{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.task .q{display:flex;gap:10px}
+.task .nr{font-weight:700;min-width:2.4em;color:var(--accent-d)}
+@media (prefers-color-scheme: dark){ .task .nr{color:var(--accent)} }
+.task .ref{font-size:.8rem;color:var(--muted)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:8px;padding:6px 12px;font-size:.9rem}
+.btn.hint{border-color:var(--hint-b)}
+.btn.sol{border-color:var(--sol-b)}
+.btn:disabled{opacity:.45;cursor:default}
+.hintbox{background:var(--hint);border-left:4px solid var(--hint-b);border-radius:8px;padding:8px 12px;margin-top:10px;font-size:.95rem}
+.solbox{background:var(--sol);border-left:4px solid var(--sol-b);border-radius:8px;padding:10px 12px;margin-top:10px}
+.self{margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.9rem;color:var(--muted)}
+.self .btn.ok.on{background:var(--sol-b);color:#fff;border-color:var(--sol-b)}
+.self .btn.no.on{background:var(--red);color:#fff;border-color:var(--red)}
+.task.done{border-color:var(--sol-b)}
+.task.redo{border-color:var(--red)}
+table{border-collapse:collapse;margin:6px 0;font-size:.92rem;width:100%}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:center}
+th{background:var(--chip)}
+td:first-child,th:first-child{text-align:left}
+.tablewrap{overflow-x:auto}
+.note{font-size:.85rem;color:var(--muted);margin-top:6px}
+.progress{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:12px 0;font-size:.9rem}
+.reset{margin-top:24px;font-size:.85rem}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:24px 16px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <button class="back" id="backBtn" hidden>← Übersicht</button>
+  <div>
+    <h1 id="title">Arbeitsheft-Check Kfz</h1>
+    <div class="sub" id="subtitle">Selbst erarbeiten – Hinweise nutzen – Lösung prüfen</div>
+  </div>
+</div></header>
+<main><div class="wrap" id="app"></div></main>
+<footer>Berufliche Schulen Altmühlfranken · Kfz-Technik · Lösungen zur Selbstkontrolle</footer>
+
+<script>
+/* =====================================================================
+   INHALTE – hier werden neue Arbeitsheft-Seiten ergänzt.
+   Jede Seite: { id, kapitel, titel, seiten, situation, bloecke:[{titel, aufgaben:[...]}] }
+   Aufgabe: { nr, frage, ref?, hinweise:[...], loesung (HTML), toleranz? }
+   ===================================================================== */
+const SEITEN = [
+{
+  id: "ottokraftstoffe",
+  kapitel: "Kraftstoffe",
+  titel: "Ottokraftstoffe",
+  seiten: "Arbeitsheft – Ottokraftstoffe (2 Seiten)",
+  situation: "Ein Fahrzeug mit Ottomotor ist liegengeblieben, weil es aus einem Ersatzkanister mit Diesel betankt wurde. Der Kunde möchte wissen, was zu tun ist und warum der Motor nicht mehr startet.",
+  bloecke: [
+    { titel: "1 Klopffestigkeit", aufgaben: [
+      { nr:"1.1", frage:"Was bedeutet die Aussage „Ottokraftstoffe müssen klopffest sein“?", ref:"Fachkundebuch",
+        hinweise:["Beim Ottomotor wird das Gemisch durch den Zündfunken entzündet – nicht durch Verdichtungswärme.","Was passiert, wenn sich das Gemisch im Brennraum <i>vorher</i> von selbst entzündet?"],
+        loesung:"Das Kraftstoff-Luft-Gemisch darf sich im Brennraum durch Verdichtung und Wärme <b>nicht von selbst entzünden</b>. Es soll nur durch den Zündfunken entflammt werden und gleichmäßig verbrennen. Unkontrollierte Selbstzündung führt zum <b>Klopfen</b> (Druckspitzen → Motorschäden)." },
+      { nr:"1.2", frage:"Was wird durch „DIN EN 228“ bzw. „DIN 51626-1“ auf dem Zapfsäulen-Aufkleber festgelegt?", ref:"Fachkundebuch",
+        hinweise:["DIN = Deutsches Institut für Normung. Was regelt eine Norm für ein Produkt?","Denke an Oktanzahl, Dichte, Siedeverhalten, Schwefel- und Ethanolgehalt."],
+        loesung:"Die Normen legen die <b>Mindestanforderungen an die Qualität</b> des Ottokraftstoffs fest, z. B. Mindest-Oktanzahl, Dichte, Siedeverlauf, max. Schwefelgehalt und max. Ethanolanteil.<br>• <b>DIN EN 228</b>: Super / Super Plus (bis 5 % Ethanol, E5)<br>• <b>DIN 51626-1</b>: Super E10 (bis 10 % Ethanol)<br>Der Kunde kann sich darauf verlassen, dass der Kraftstoff diese Werte einhält." },
+      { nr:"1.3", frage:"Erklären Sie den Aufdruck „ROZ 95“.",
+        hinweise:["ROZ ist eine Abkürzung – das R steht für ein englisches Wort (Prüfmethode).","Die Zahl vergleicht den Kraftstoff mit einer Mischung aus zwei Vergleichskraftstoffen: einem sehr klopffesten (Isooktan = 100) und einem sehr klopffreudigen (n-Heptan = 0)."],
+        loesung:"<b>ROZ = Research-Oktanzahl</b>: Sie beschreibt die Klopffestigkeit des Kraftstoffs (Prüfung bei niedriger Drehzahl/Teillast).<br><b>95</b>: Der Kraftstoff verhält sich hinsichtlich seiner Klopffestigkeit wie eine Mischung aus <b>95 % Isooktan und 5 % n-Heptan</b>." },
+      { nr:"1.4", frage:"Erklären Sie die Abkürzung MOZ.",
+        hinweise:["Das M steht für die zweite Prüfmethode.","Unter welchen Bedingungen wird geprüft – eher Teillast oder hohe Last/Drehzahl? Ist der Wert höher oder niedriger als die ROZ?"],
+        loesung:"<b>MOZ = Motor-Oktanzahl</b>: Klopffestigkeit, gemessen unter <b>verschärften Bedingungen</b> (höhere Drehzahl, vorgewärmtes Gemisch, Volllast). Sie beschreibt das Klopfverhalten bei hoher Belastung und liegt <b>niedriger als die ROZ</b>." },
+      { nr:"1.5", frage:"Tragen Sie die Mindestoktanzahlen in die Tabelle ein.", ref:"Tabellenbuch",
+        hinweise:["Die ROZ steht schon auf den Aufklebern an der Zapfsäule.","Die MOZ liegt jeweils etwa 10 Punkte unter der ROZ."],
+        loesung:`<div class="tablewrap"><table><tr><th>Kraftstoff</th><th>Super E10</th><th>Super</th><th>Super Plus</th></tr>
+<tr><td>ROZ</td><td>95</td><td>95</td><td>98</td></tr><tr><td>MOZ</td><td>85</td><td>85</td><td>88</td></tr></table></div>` },
+      { nr:"1.6", frage:"Ein Motor, der bisher mit Super betrieben wurde, wird höher verdichtet. Wie wirkt sich das auf den Oktanzahlbedarf aus? Was ist zu tun?",
+        hinweise:["Höhere Verdichtung → höhere Temperatur am Ende des Verdichtungstakts.","Was bedeutet das für die Gefahr der Selbstzündung – und welchen Kraftstoff braucht man dann?"],
+        loesung:"Durch die höhere Verdichtung steigen Druck und Temperatur im Brennraum → die Klopfneigung steigt, der <b>Oktanzahlbedarf steigt</b>.<br>Maßnahme: Kraftstoff mit <b>höherer Oktanzahl</b> tanken (z. B. Super Plus, ROZ 98); Zündzeitpunkt/Klopfregelung ggf. anpassen." }
+    ]},
+    { titel: "2 Siedeverhalten", aufgaben: [
+      { nr:"2.1", frage:"Ermitteln Sie aus dem Siedediagramm, bei welcher Temperatur 10 %, 50 %, 70 % und 90 % des Kraftstoffs verdampft sind.", toleranz:true,
+        hinweise:["Geh auf der x-Achse zum Prozentwert, senkrecht nach oben bis zur Kurve (rot = Sommer, blau = Winter), dann waagrecht nach links zur Temperatur.","Die blaue Winterkurve liegt <b>unter</b> der roten Sommerkurve – die Wintertemperaturen müssen also <b>niedriger</b> sein.","Die markierten Punkte bei 10 % (T10) und 90 % (T90) helfen dir beim Ablesen."],
+        loesung:`<div class="tablewrap"><table><tr><th>verdampftes Volumen</th><th>10 %</th><th>50 %</th><th>70 %</th><th>90 %</th></tr>
+<tr><td>Sommerkraftstoff</td><td>≈ 52 °C</td><td>≈ 103 °C</td><td>≈ 128 °C</td><td>≈ 170 °C</td></tr>
+<tr><td>Winterkraftstoff</td><td>≈ 41 °C</td><td>≈ 90 °C</td><td>≈ 115 °C</td><td>≈ 158 °C</td></tr></table></div>
+<div class="note">Ablesewerte – Abweichungen von etwa ±5 °C sind in Ordnung.</div>` },
+      { nr:"2.2", frage:"Wie unterscheidet sich Winterkraftstoff von Sommerkraftstoff hinsichtlich seines Siedeverhaltens?",
+        hinweise:["Vergleiche deine Werte aus 2.1: Welche Kurve erreicht bei gleicher Temperatur mehr verdampften Kraftstoff?"],
+        loesung:"Winterkraftstoff enthält mehr leichtsiedende Bestandteile; er siedet bei <b>niedrigeren Temperaturen</b> und <b>verdampft leichter</b> als Sommerkraftstoff (wichtig für den Kaltstart)." },
+      { nr:"2.3", frage:"Welche Schwierigkeiten können entstehen, wenn im Sommer Winterkraftstoff bzw. im Winter Sommerkraftstoff getankt wird?",
+        hinweise:["Winterkraftstoff bei Hitze: Er verdampft schon in Leitungen und Pumpe …","Sommerkraftstoff bei Kälte: Es verdampft zu wenig – was passiert mit dem flüssigen Rest im Zylinder?"],
+        loesung:"<b>Winterkraftstoff im Sommer:</b> Kraftstoff verdampft schon im Kraftstoffsystem → <b>Dampfblasenbildung</b> → Heißstart-Probleme, Leistungsabfall, Aussetzer.<br><b>Sommerkraftstoff im Winter:</b> Zu wenig Kraftstoff verdampft → <b>Kaltstartschwierigkeiten</b>; nicht verdampfter Kraftstoff schlägt sich an den Zylinderwänden nieder → <b>Ölverdünnung</b>." },
+      { nr:"2.4", frage:"Ergänzen Sie die fehlenden Werte für Ethanol und Superbenzin.", ref:"Tabellenbuch S. 169",
+        hinweise:["Alle Werte stehen im Tabellenbuch in der Tabelle „Kraftstoffe“.","Achte auf die Einheiten: Dichte in kg/l, Heizwert in kJ/kg."],
+        loesung:`<div class="tablewrap"><table><tr><th>Kraftstoff</th><th>Dichte kg/l</th><th>spez. Heizwert kJ/kg</th><th>theor. Luftbedarf kg/kg</th><th>Siedetemperatur °C</th></tr>
+<tr><td>Ethanol</td><td>0,79</td><td>26 800</td><td>9</td><td>78</td></tr>
+<tr><td>Superbenzin</td><td>0,73 … 0,78</td><td>43 500</td><td>14,7</td><td>25 … 215</td></tr></table></div>
+<div class="note">Je nach Tabellenbuch-Auflage können die Werte leicht abweichen (z. B. Luftbedarf 14,7 oder 14,8).</div>` }
+    ]},
+    { titel: "3 Sicherheit im Umgang mit Ottokraftstoffen", aufgaben: [
+      { nr:"3.1", frage:"Begründen Sie die Einteilung in Gefahrenklasse AI und erklären Sie den Begriff „Flammpunkt“.", ref:"Tabellenbuch S. 525",
+        hinweise:["Schau nach, bis zu welcher Temperatur der Flammpunkt bei Gefahrenklasse AI liegt.","Flammpunkt: Ab welcher Temperatur bildet sich über der Flüssigkeit so viel Dampf, dass er sich entzünden lässt?"],
+        loesung:"Ottokraftstoffe haben einen <b>Flammpunkt unter 21 °C</b> (Benzin: unter −20 °C) → Gefahrenklasse AI.<br><b>Flammpunkt</b> = niedrigste Temperatur, bei der sich über einer Flüssigkeit so viele Dämpfe bilden, dass sie mit Luft ein <b>zündfähiges Gemisch</b> ergeben." },
+      { nr:"3.2", frage:"Geben Sie die Bedeutung der H-Sätze H315, H411, H224 und H340 an.",
+        hinweise:["H = Hazard (Gefahr). Ordne jedem Satz eines der vier Gefahrenpiktogramme zu: Ausrufezeichen, Umwelt, Flamme, Gesundheitsgefahr.","H2xx = physikalische Gefahren, H3xx = Gesundheitsgefahren, H4xx = Umweltgefahren."],
+        loesung:"<b>H315</b>: Verursacht Hautreizungen. (Ausrufezeichen)<br><b>H411</b>: Giftig für Wasserorganismen, mit langfristiger Wirkung. (Umwelt)<br><b>H224</b>: Flüssigkeit und Dampf extrem entzündbar. (Flamme)<br><b>H340</b>: Kann genetische Defekte verursachen. (Gesundheitsgefahr)" },
+      { nr:"3.3", frage:"Geben Sie die Bedeutung der P-Sätze P210 und P403 an.",
+        hinweise:["P = Precaution (Vorsicht/Sicherheitshinweis).","P2xx = Prävention, P4xx = Aufbewahrung."],
+        loesung:"<b>P210</b>: Von Hitze, heißen Oberflächen, Funken, offenen Flammen und anderen Zündquellen fernhalten. Nicht rauchen.<br><b>P403</b>: An einem gut belüfteten Ort aufbewahren." }
+    ]},
+    { titel: "4 Lösung der Situation", aufgaben: [
+      { nr:"4", frage:"Warum blieb das Fahrzeug liegen? Was ist zu tun?",
+        hinweise:["Vergleiche den Siedebereich von Diesel (ca. 180–360 °C) mit dem von Benzin (ca. 25–215 °C).","Was braucht der Ottomotor, damit der Zündfunke das Gemisch entzünden kann? (Tipp: Aufgabe 2)"],
+        loesung:"<b>Ursache:</b> Dieselkraftstoff siedet erst bei ca. 180–360 °C. Er <b>verdampft im Saugrohr/Zylinder nicht</b>, es entsteht kein zündfähiges Gemisch → der Zündfunke kann es nicht entzünden (außerdem ist Diesel nicht klopffest).<br><b>Maßnahmen:</b> Motor nicht mehr starten, Kraftstoff <b>vollständig abpumpen</b>, Tank und Kraftstoffanlage <b>spülen</b>, Kraftstofffilter erneuern, mit richtigem Kraftstoff neu befüllen." }
+    ]}
+  ]
+}
+/* ---- neue Seiten hier anhängen:  ,{ id:"...", kapitel:"...", titel:"...", ... } ---- */
+];
+
+/* ===================================================================== */
+const app = document.getElementById('app');
+const KEY = 'kfzAhCheck';
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { state = {}; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} };
+const allTasks = s => s.bloecke.flatMap(b => b.aufgaben);
+const doneCount = s => allTasks(s).filter(a => state[s.id+'|'+a.nr] === 'ok').length;
+
+function overview(){
+  document.getElementById('backBtn').hidden = true;
+  document.getElementById('title').textContent = 'Arbeitsheft-Check Kfz';
+  document.getElementById('subtitle').textContent = 'Selbst erarbeiten – Hinweise nutzen – Lösung prüfen';
+  let html = `<div class="intro"><b>So arbeitest du:</b><ol>
+    <li>Bearbeite die Aufgabe zuerst <b>allein im Arbeitsheft</b> (Fachkundebuch / Tabellenbuch nutzen).</li>
+    <li>Kommst du nicht weiter? Öffne <b>Hinweis für Hinweis</b>.</li>
+    <li>Erst danach: <b>Lösung anzeigen</b> und deine Antwort vergleichen.</li>
+    <li>Markiere ehrlich: <b>✓ richtig</b> oder <b>✗ verbessert</b> – so siehst du deinen Fortschritt.</li></ol></div>`;
+  const kap = [...new Set(SEITEN.map(s => s.kapitel))];
+  kap.forEach(k => {
+    html += `<div class="chapter">${k}</div>`;
+    SEITEN.filter(s => s.kapitel === k).forEach(s => {
+      const n = allTasks(s).length, d = doneCount(s);
+      html += `<button class="pagecard" data-id="${s.id}"><div class="t">${s.titel}</div>
+        <div class="m">${s.seiten} · ${n} Aufgaben · ${d}/${n} richtig</div>
+        <div class="bar"><i style="width:${Math.round(d/n*100)}%"></i></div></button>`;
+    });
+  });
+  app.innerHTML = html;
+  app.querySelectorAll('.pagecard').forEach(b => b.onclick = () => { location.hash = b.dataset.id; });
+  window.scrollTo(0,0);
+}
+
+function page(s){
+  document.getElementById('backBtn').hidden = false;
+  document.getElementById('title').textContent = s.titel;
+  document.getElementById('subtitle').textContent = s.seiten;
+  let html = '';
+  if (s.situation) html += `<div class="situation"><b>Situation:</b> ${s.situation}</div>`;
+  html += `<div class="progress" id="prog"></div>`;
+  s.bloecke.forEach(b => {
+    html += `<div class="block"><h2>${b.titel}</h2>`;
+    b.aufgaben.forEach(a => {
+      const k = s.id+'|'+a.nr, st = state[k] || '';
+      html += `<div class="task ${st==='ok'?'done':st==='no'?'redo':''}" data-k="${k}">
+        <div class="q"><div class="nr">${a.nr}</div><div>${a.frage}${a.ref?`<div class="ref">📖 ${a.ref}</div>`:''}</div></div>
+        <div class="hints"></div><div class="sol" hidden><div class="solbox">${a.loesung}</div>
+          <div class="self">Meine Antwort war:
+            <button class="btn ok ${st==='ok'?'on':''}">✓ richtig</button>
+            <button class="btn no ${st==='no'?'on':''}">✗ verbessert</button></div></div>
+        <div class="actions">
+          ${a.hinweise.length?`<button class="btn hint">💡 Hinweis (${a.hinweise.length})</button>`:''}
+          <button class="btn sol">✔ Lösung anzeigen</button></div></div>`;
+    });
+    html += `</div>`;
+  });
+  html += `<button class="btn reset">Fortschritt dieser Seite zurücksetzen</button>`;
+  app.innerHTML = html;
+
+  app.querySelectorAll('.task').forEach(t => {
+    const [, nr] = t.dataset.k.split('|');
+    const a = allTasks(s).find(x => x.nr === nr);
+    let shown = 0;
+    const hb = t.querySelector('.btn.hint'), sb = t.querySelector('.btn.sol'), sol = t.querySelector('.sol');
+    if (hb) hb.onclick = () => {
+      const d = document.createElement('div'); d.className = 'hintbox';
+      d.innerHTML = `<b>Hinweis ${shown+1}:</b> ${a.hinweise[shown]}`;
+      t.querySelector('.hints').appendChild(d); shown++;
+      hb.textContent = shown < a.hinweise.length ? `💡 Weiterer Hinweis (${a.hinweise.length-shown})` : '💡 Keine weiteren Hinweise';
+      hb.disabled = shown >= a.hinweise.length;
+    };
+    sb.onclick = () => { sol.hidden = !sol.hidden; sb.textContent = sol.hidden ? '✔ Lösung anzeigen' : 'Lösung ausblenden'; };
+    t.querySelector('.btn.ok').onclick = () => mark(t, 'ok');
+    t.querySelector('.btn.no').onclick = () => mark(t, 'no');
+  });
+  app.querySelector('.reset').onclick = () => {
+    allTasks(s).forEach(a => delete state[s.id+'|'+a.nr]); save(); page(s);
+  };
+  updateProg(s);
+  window.scrollTo(0,0);
+
+  function mark(t, v){
+    state[t.dataset.k] = state[t.dataset.k] === v ? '' : v; save();
+    const cur = state[t.dataset.k];
+    t.classList.toggle('done', cur==='ok'); t.classList.toggle('redo', cur==='no');
+    t.querySelector('.btn.ok').classList.toggle('on', cur==='ok');
+    t.querySelector('.btn.no').classList.toggle('on', cur==='no');
+    updateProg(s);
+  }
+}
+function updateProg(s){
+  const n = allTasks(s).length, d = doneCount(s);
+  const r = allTasks(s).filter(a => state[s.id+'|'+a.nr]==='no').length;
+  document.getElementById('prog').innerHTML = `Fortschritt: <b>${d}/${n}</b> richtig · ${r} verbessert
+    <div class="bar"><i style="width:${Math.round(d/n*100)}%"></i></div>`;
+}
+function route(){
+  const s = SEITEN.find(x => x.id === location.hash.slice(1));
+  s ? page(s) : overview();
+}
+document.getElementById('backBtn').onclick = () => { location.hash = ''; };
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>
