@@ -92,61 +92,54 @@ const SEITEN = [
   situation: "Ein Fahrzeug mit Ottomotor ist liegengeblieben, weil es aus einem Ersatzkanister mit Diesel betankt wurde. Der Kunde möchte wissen, was zu tun ist und warum der Motor nicht mehr startet.",
   bloecke: [
     { titel: "1 Klopffestigkeit", aufgaben: [
-      { nr:"1.1", frage:"Was bedeutet die Aussage „Ottokraftstoffe müssen klopffest sein“?", ref:"Fachkundebuch",
+      { nr:"1.1", frage:"Was bedeutet die Aussage „Ottokraftstoffe müssen klopffest sein“?", ref:"Tabellenbuch S. 166",
         hinweise:["Beim Ottomotor wird das Gemisch durch den Zündfunken entzündet – nicht durch Verdichtungswärme.","Was passiert, wenn sich das Gemisch im Brennraum <i>vorher</i> von selbst entzündet?"],
-        loesung:"Das Kraftstoff-Luft-Gemisch darf sich im Brennraum durch Verdichtung und Wärme <b>nicht von selbst entzünden</b>. Es soll nur durch den Zündfunken entflammt werden und gleichmäßig verbrennen. Unkontrollierte Selbstzündung führt zum <b>Klopfen</b> (Druckspitzen → Motorschäden)." },
-      { nr:"1.2", frage:"Was wird durch „DIN EN 228“ bzw. „DIN 51626-1“ auf dem Zapfsäulen-Aufkleber festgelegt?", ref:"Fachkundebuch",
-        hinweise:["DIN = Deutsches Institut für Normung. Was regelt eine Norm für ein Produkt?","Denke an Oktanzahl, Dichte, Siedeverhalten, Schwefel- und Ethanolgehalt."],
-        loesung:"Die Normen legen die <b>Mindestanforderungen an die Qualität</b> des Ottokraftstoffs fest, z. B. Mindest-Oktanzahl, Dichte, Siedeverlauf, max. Schwefelgehalt und max. Ethanolanteil.<br>• <b>DIN EN 228</b>: Super / Super Plus (bis 5 % Ethanol, E5)<br>• <b>DIN 51626-1</b>: Super E10 (bis 10 % Ethanol)<br>Der Kunde kann sich darauf verlassen, dass der Kraftstoff diese Werte einhält." },
+        loesung:`Ottokraftstoffe dürfen sich im Brennraum nicht von selbst entzünden.` },
+      { nr:"1.2", frage:"Was wird durch „DIN EN 228“ bzw. „DIN 51626-1“ auf dem Zapfsäulen-Aufkleber festgelegt?", ref:"Tabellenbuch S. 31",
+        hinweise:["DIN = Deutsches Institut für Normung. Was regelt eine Norm für ein Produkt?","Super, Super Plus und Super E10 unterscheiden sich – die Norm legt fest, welche Eigenschaften jede Sorte haben muss."],
+        loesung:`Die Eigenschaften der verschiedenen Ottokraftstoffe.` },
       { nr:"1.3", frage:"Erklären Sie den Aufdruck „ROZ 95“.",
         hinweise:["ROZ ist eine Abkürzung – das R steht für ein englisches Wort (Prüfmethode).","Die Zahl vergleicht den Kraftstoff mit einer Mischung aus zwei Vergleichskraftstoffen: einem sehr klopffesten (Isooktan = 100) und einem sehr klopffreudigen (n-Heptan = 0)."],
-        loesung:"<b>ROZ = Research-Oktanzahl</b>: Sie beschreibt die Klopffestigkeit des Kraftstoffs (Prüfung bei niedriger Drehzahl/Teillast).<br><b>95</b>: Der Kraftstoff verhält sich hinsichtlich seiner Klopffestigkeit wie eine Mischung aus <b>95 % Isooktan und 5 % n-Heptan</b>." },
+        loesung:`<b>ROZ:</b> Research-Oktanzahl: Sie beschreibt die Klopffestigkeit des Kraftstoffs.<br><b>95:</b> Der Kraftstoff verhält sich hinsichtlich seiner Klopffestigkeit wie eine Mischung aus 95 % Isooktan und 5 % n-Heptan.` },
       { nr:"1.4", frage:"Erklären Sie die Abkürzung MOZ.",
         hinweise:["Das M steht für die zweite Prüfmethode.","Unter welchen Bedingungen wird geprüft – eher Teillast oder hohe Last/Drehzahl? Ist der Wert höher oder niedriger als die ROZ?"],
-        loesung:"<b>MOZ = Motor-Oktanzahl</b>: Klopffestigkeit, gemessen unter <b>verschärften Bedingungen</b> (höhere Drehzahl, vorgewärmtes Gemisch, Volllast). Sie beschreibt das Klopfverhalten bei hoher Belastung und liegt <b>niedriger als die ROZ</b>." },
-      { nr:"1.5", frage:"Tragen Sie die Mindestoktanzahlen in die Tabelle ein.", ref:"Tabellenbuch",
+        loesung:`Motor-Oktanzahl` },
+      { nr:"1.5", frage:"Tragen Sie die Mindestoktanzahlen in die Tabelle ein.",
         hinweise:["Die ROZ steht schon auf den Aufklebern an der Zapfsäule.","Die MOZ liegt jeweils etwa 10 Punkte unter der ROZ."],
-        loesung:`<div class="tablewrap"><table><tr><th>Kraftstoff</th><th>Super E10</th><th>Super</th><th>Super Plus</th></tr>
-<tr><td>ROZ</td><td>95</td><td>95</td><td>98</td></tr><tr><td>MOZ</td><td>85</td><td>85</td><td>88</td></tr></table></div>` },
+        loesung:`<div class="tablewrap"><table><tr><th>Kraftstoff</th><th>Super E10</th><th>Super</th><th>Super Plus</th></tr><tr><td>ROZ</td><td>95</td><td>95</td><td>98</td></tr><tr><td>MOZ</td><td>85</td><td>85</td><td>88</td></tr></table></div>` },
       { nr:"1.6", frage:"Ein Motor, der bisher mit Super betrieben wurde, wird höher verdichtet. Wie wirkt sich das auf den Oktanzahlbedarf aus? Was ist zu tun?",
-        hinweise:["Höhere Verdichtung → höhere Temperatur am Ende des Verdichtungstakts.","Was bedeutet das für die Gefahr der Selbstzündung – und welchen Kraftstoff braucht man dann?"],
-        loesung:"Durch die höhere Verdichtung steigen Druck und Temperatur im Brennraum → die Klopfneigung steigt, der <b>Oktanzahlbedarf steigt</b>.<br>Maßnahme: Kraftstoff mit <b>höherer Oktanzahl</b> tanken (z. B. Super Plus, ROZ 98); Zündzeitpunkt/Klopfregelung ggf. anpassen." }
+        hinweise:["Höhere Verdichtung → höhere Temperatur am Ende des Verdichtungstakts.","Mehr Klopfgefahr → man braucht einen Kraftstoff mit höherer Oktanzahl. Welche Sorte an der Zapfsäule ist das?"],
+        loesung:`Der Oktanzahlbedarf steigt. Anstatt Superbenzin muss Super Plus getankt werden.` }
     ]},
     { titel: "2 Siedeverhalten", aufgaben: [
       { nr:"2.1", frage:"Ermitteln Sie aus dem Siedediagramm, bei welcher Temperatur 10 %, 50 %, 70 % und 90 % des Kraftstoffs verdampft sind.", toleranz:true,
-        hinweise:["Geh auf der x-Achse zum Prozentwert, senkrecht nach oben bis zur Kurve (rot = Sommer, blau = Winter), dann waagrecht nach links zur Temperatur.","Die blaue Winterkurve liegt <b>unter</b> der roten Sommerkurve – die Wintertemperaturen müssen also <b>niedriger</b> sein.","Die markierten Punkte bei 10 % (T10) und 90 % (T90) helfen dir beim Ablesen."],
-        loesung:`<div class="tablewrap"><table><tr><th>verdampftes Volumen</th><th>10 %</th><th>50 %</th><th>70 %</th><th>90 %</th></tr>
-<tr><td>Sommerkraftstoff</td><td>≈ 52 °C</td><td>≈ 103 °C</td><td>≈ 128 °C</td><td>≈ 170 °C</td></tr>
-<tr><td>Winterkraftstoff</td><td>≈ 41 °C</td><td>≈ 90 °C</td><td>≈ 115 °C</td><td>≈ 158 °C</td></tr></table></div>
-<div class="note">Ablesewerte – Abweichungen von etwa ±5 °C sind in Ordnung.</div>` },
+        hinweise:["Geh auf der x-Achse zum Prozentwert, senkrecht nach oben bis zur Kurve (rot = Sommer, blau = Winter), dann waagrecht nach links zur Temperatur.","Die markierten Punkte bei 10 % (T10) und 90 % (T90) helfen dir beim Ablesen."],
+        loesung:`<div class="tablewrap"><table><tr><th>verdampftes Kraftstoffvolumen</th><th>10 %</th><th>50 %</th><th>70 %</th><th>90 %</th></tr><tr><td>Sommerkraftstoff</td><td>53 °C</td><td>105 °C</td><td>130 °C</td><td>170 °C</td></tr><tr><td>Winterkraftstoff</td><td>53 °C</td><td>105 °C</td><td>130 °C</td><td>170 °C</td></tr></table></div>` },
       { nr:"2.2", frage:"Wie unterscheidet sich Winterkraftstoff von Sommerkraftstoff hinsichtlich seines Siedeverhaltens?",
         hinweise:["Vergleiche deine Werte aus 2.1: Welche Kurve erreicht bei gleicher Temperatur mehr verdampften Kraftstoff?"],
-        loesung:"Winterkraftstoff enthält mehr leichtsiedende Bestandteile; er siedet bei <b>niedrigeren Temperaturen</b> und <b>verdampft leichter</b> als Sommerkraftstoff (wichtig für den Kaltstart)." },
+        loesung:`Winterkraftstoff verdampft leichter als Sommerkraftstoff.` },
       { nr:"2.3", frage:"Welche Schwierigkeiten können entstehen, wenn im Sommer Winterkraftstoff bzw. im Winter Sommerkraftstoff getankt wird?",
         hinweise:["Winterkraftstoff bei Hitze: Er verdampft schon in Leitungen und Pumpe …","Sommerkraftstoff bei Kälte: Es verdampft zu wenig – was passiert mit dem flüssigen Rest im Zylinder?"],
-        loesung:"<b>Winterkraftstoff im Sommer:</b> Kraftstoff verdampft schon im Kraftstoffsystem → <b>Dampfblasenbildung</b> → Heißstart-Probleme, Leistungsabfall, Aussetzer.<br><b>Sommerkraftstoff im Winter:</b> Zu wenig Kraftstoff verdampft → <b>Kaltstartschwierigkeiten</b>; nicht verdampfter Kraftstoff schlägt sich an den Zylinderwänden nieder → <b>Ölverdünnung</b>." },
+        loesung:`<b>Winterkraftstoff im Sommer:</b> Startschwierigkeiten durch Dampfblasenbildung.<br><b>Sommerkraftstoff im Winter:</b> Startschwierigkeiten, da zu wenig Kraftstoff vergast, Gefahr der Ölverdünnung.` },
       { nr:"2.4", frage:"Ergänzen Sie die fehlenden Werte für Ethanol und Superbenzin.", ref:"Tabellenbuch S. 169",
         hinweise:["Alle Werte stehen im Tabellenbuch in der Tabelle „Kraftstoffe“.","Achte auf die Einheiten: Dichte in kg/l, Heizwert in kJ/kg."],
-        loesung:`<div class="tablewrap"><table><tr><th>Kraftstoff</th><th>Dichte kg/l</th><th>spez. Heizwert kJ/kg</th><th>theor. Luftbedarf kg/kg</th><th>Siedetemperatur °C</th></tr>
-<tr><td>Ethanol</td><td>0,79</td><td>26 800</td><td>9</td><td>78</td></tr>
-<tr><td>Superbenzin</td><td>0,73 … 0,78</td><td>43 500</td><td>14,7</td><td>25 … 215</td></tr></table></div>
-<div class="note">Je nach Tabellenbuch-Auflage können die Werte leicht abweichen (z. B. Luftbedarf 14,7 oder 14,8).</div>` }
+        loesung:`<div class="tablewrap"><table><tr><th>Kraftstoff</th><th>Dichte kg/l</th><th>spez. Heizwert kJ/kg</th><th>theoret. Luftbedarf kg Luft/kg Kraftstoff</th><th>Siedetemperatur °C</th></tr><tr><td>Ethanol</td><td>0,79</td><td>26 800</td><td>9</td><td>78</td></tr><tr><td>Superbenzin</td><td>0,73 … 0,78</td><td>43 500</td><td>14,7</td><td>25 … 215</td></tr></table></div>` }
     ]},
     { titel: "3 Sicherheit im Umgang mit Ottokraftstoffen", aufgaben: [
       { nr:"3.1", frage:"Begründen Sie die Einteilung in Gefahrenklasse AI und erklären Sie den Begriff „Flammpunkt“.", ref:"Tabellenbuch S. 525",
         hinweise:["Schau nach, bis zu welcher Temperatur der Flammpunkt bei Gefahrenklasse AI liegt.","Flammpunkt: Ab welcher Temperatur bildet sich über der Flüssigkeit so viel Dampf, dass er sich entzünden lässt?"],
-        loesung:"Ottokraftstoffe haben einen <b>Flammpunkt unter 21 °C</b> (Benzin: unter −20 °C) → Gefahrenklasse AI.<br><b>Flammpunkt</b> = niedrigste Temperatur, bei der sich über einer Flüssigkeit so viele Dämpfe bilden, dass sie mit Luft ein <b>zündfähiges Gemisch</b> ergeben." },
+        loesung:`Ihr Flammpunkt liegt unter 21 °C. Der Flammpunkt ist die niedrigste Temperatur, bei der sich über einem Stoff zündfähige Gase bilden.` },
       { nr:"3.2", frage:"Geben Sie die Bedeutung der H-Sätze H315, H411, H224 und H340 an.",
         hinweise:["H = Hazard (Gefahr). Ordne jedem Satz eines der vier Gefahrenpiktogramme zu: Ausrufezeichen, Umwelt, Flamme, Gesundheitsgefahr.","H2xx = physikalische Gefahren, H3xx = Gesundheitsgefahren, H4xx = Umweltgefahren."],
-        loesung:"<b>H315</b>: Verursacht Hautreizungen. (Ausrufezeichen)<br><b>H411</b>: Giftig für Wasserorganismen, mit langfristiger Wirkung. (Umwelt)<br><b>H224</b>: Flüssigkeit und Dampf extrem entzündbar. (Flamme)<br><b>H340</b>: Kann genetische Defekte verursachen. (Gesundheitsgefahr)" },
+        loesung:`<b>H315</b> Verursacht Hautreizungen.<br><b>H411</b> Giftig für Wasserorganismen, mit langfristiger Wirkung.<br><b>H224</b> Flüssigkeit und Dampf extrem entzündbar.<br><b>H340</b> Kann genetische Defekte/Krebs erzeugen.` },
       { nr:"3.3", frage:"Geben Sie die Bedeutung der P-Sätze P210 und P403 an.",
         hinweise:["P = Precaution (Vorsicht/Sicherheitshinweis).","P2xx = Prävention, P4xx = Aufbewahrung."],
-        loesung:"<b>P210</b>: Von Hitze, heißen Oberflächen, Funken, offenen Flammen und anderen Zündquellen fernhalten. Nicht rauchen.<br><b>P403</b>: An einem gut belüfteten Ort aufbewahren." }
+        loesung:`<b>P210</b> Von Hitze, heißen Oberflächen, ... fernhalten, nicht rauchen.<br><b>P403</b> An einem gut belüfteten Ort aufbewahren.` }
     ]},
     { titel: "4 Lösung der Situation", aufgaben: [
       { nr:"4", frage:"Warum blieb das Fahrzeug liegen? Was ist zu tun?",
-        hinweise:["Vergleiche den Siedebereich von Diesel (ca. 180–360 °C) mit dem von Benzin (ca. 25–215 °C).","Was braucht der Ottomotor, damit der Zündfunke das Gemisch entzünden kann? (Tipp: Aufgabe 2)"],
-        loesung:"<b>Ursache:</b> Dieselkraftstoff siedet erst bei ca. 180–360 °C. Er <b>verdampft im Saugrohr/Zylinder nicht</b>, es entsteht kein zündfähiges Gemisch → der Zündfunke kann es nicht entzünden (außerdem ist Diesel nicht klopffest).<br><b>Maßnahmen:</b> Motor nicht mehr starten, Kraftstoff <b>vollständig abpumpen</b>, Tank und Kraftstoffanlage <b>spülen</b>, Kraftstofffilter erneuern, mit richtigem Kraftstoff neu befüllen." }
+        hinweise:["Vergleiche den Siedebereich von Diesel (ca. 180–360 °C) mit dem von Benzin (ca. 25–215 °C).","Aufgabe 2: Der Kraftstoff muss gasförmig sein, damit er gezündet werden kann. Was muss mit dem falschen Kraftstoff im Tank passieren?"],
+        loesung:`Der Kraftstoff wurde nicht entzündet, weil er im Zylinder nicht verdampfte. Der Kraftstoff ist vollständig abzupumpen. Die Anlage ist zu spülen.` }
     ]}
   ]
 }
@@ -168,8 +161,8 @@ function overview(){
   document.getElementById('subtitle').textContent = 'Selbst erarbeiten – Hinweise nutzen – Lösung prüfen';
   let html = `<div class="intro"><b>So arbeitest du:</b><ol>
     <li>Bearbeite die Aufgabe zuerst <b>allein im Arbeitsheft</b> (Fachkundebuch / Tabellenbuch nutzen).</li>
-    <li>Kommst du nicht weiter? Öffne <b>Hinweis für Hinweis</b>.</li>
-    <li>Erst danach: <b>Lösung anzeigen</b> und deine Antwort vergleichen.</li>
+    <li>Dann öffnest du <b>Hinweis für Hinweis</b>.</li>
+    <li>Erst wenn alle Hinweise offen sind, wird die <b>Lösung</b> freigeschaltet – vergleiche sie mit deiner Antwort.</li>
     <li>Markiere ehrlich: <b>✓ richtig</b> oder <b>✗ verbessert</b> – so siehst du deinen Fortschritt.</li></ol></div>`;
   const kap = [...new Set(SEITEN.map(s => s.kapitel))];
   kap.forEach(k => {
@@ -205,7 +198,7 @@ function page(s){
             <button class="btn no ${st==='no'?'on':''}">✗ verbessert</button></div></div>
         <div class="actions">
           ${a.hinweise.length?`<button class="btn hint">💡 Hinweis (${a.hinweise.length})</button>`:''}
-          <button class="btn sol">✔ Lösung anzeigen</button></div></div>`;
+          <button class="btn sol" ${a.hinweise.length?'disabled':''}>${a.hinweise.length?'🔒 Lösung (erst alle Hinweise)':'✔ Lösung anzeigen'}</button></div></div>`;
     });
     html += `</div>`;
   });
@@ -223,6 +216,7 @@ function page(s){
       t.querySelector('.hints').appendChild(d); shown++;
       hb.textContent = shown < a.hinweise.length ? `💡 Weiterer Hinweis (${a.hinweise.length-shown})` : '💡 Keine weiteren Hinweise';
       hb.disabled = shown >= a.hinweise.length;
+      if (shown >= a.hinweise.length) { sb.disabled = false; sb.textContent = '✔ Lösung anzeigen'; }
     };
     sb.onclick = () => { sol.hidden = !sol.hidden; sb.textContent = sol.hidden ? '✔ Lösung anzeigen' : 'Lösung ausblenden'; };
     t.querySelector('.btn.ok').onclick = () => mark(t, 'ok');
